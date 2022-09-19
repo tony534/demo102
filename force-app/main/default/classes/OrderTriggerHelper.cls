@@ -6,6 +6,7 @@ public with sharing class OrderTriggerHelper {
     public static void checkCustomerAuthorizedByContact(List<Order> orderList){
         List<Id> contactIds = new List<Id>();
         for(Order o : orderList) {
+            system.debug('o.CustomerAuthorizedById == '+o.CustomerAuthorizedById );
             if(o.CustomerAuthorizedById == null){
                 o.addError('Customer AuthorizedBy missing.');
             }else{

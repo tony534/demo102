@@ -69,14 +69,14 @@ public with sharing class OrderTriggerHandlerTest {
         }
     }
 
-    // @IsTest
-    // public static void testEditOrderFailure2(){
-    //     Order o1 = [select id, CustomerAuthorizedById from order][0];   
-    //     o1.CustomerAuthorizedById = null;
-    //     try{
-    //         update o1;
-    //     }catch(DmlException ex){
-    //         system.assertEquals('Customer AuthorizedBy missing.', ex.getDmlMessage(0));
-    //     }
-    // }
+    @IsTest
+    public static void testEditOrderFailure2(){
+        Order o1 = [select id, CustomerAuthorizedById from order][0];   
+        o1.CustomerAuthorizedById = null;
+        try{
+            update o1;
+        }catch(DmlException ex){
+            system.assertEquals('primary contact missing', ex.getDmlMessage(0));
+        }
+    }
 }
